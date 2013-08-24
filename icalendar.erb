@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Nuck//AnimiCalendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Anime Calendar<% episodes.each do |episode| %>
+BEGIN:VEVENT
+DTSTART:<%= time_to_ical episode.airtime %>
+DTEND:<%= time_to_ical (episode.airtime + (25 * 60)) %>
+UID:<%= episode.uid %>
+DESCRIPTION:<%= escape wrap(episode.show.description, 12) %>
+LOCATION:<%= escape wrap(episode.station, 9) %>
+SUMMARY:<%= escape wrap("#{episode.show.title} Ep. #{episode.number}", 8) %>
+TRANSP:TRANSPARENT
+END:VEVENT<% end %>
+END:VCALENDAR
