@@ -15,7 +15,7 @@ class AnimeCalendar
       yield
     end
   end
-  def initialize (date, verbose)
+  def initialize (date, verbose = false)
     @verbose = verbose
     @src = ""
     @doc = nil
