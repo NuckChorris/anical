@@ -36,7 +36,7 @@ class AnimeCalendar
           title = ep.css('.tooltip_title h4').text.strip
           desc = ep.css('.tooltip_desc').text.strip
           info = ep.css('.tooltip_info').text.strip
-          info = /Ep:\s+(?<no>\d+)\s+at\s+(?<time>\d+:\d+)\s+on\s+(?<station>.*)/.match(info)
+          info = /Ep:\s+(?<no>\d+)\s+at\s+(?<time>\d+:\d+)(?:\s+on\s+(?<station>.*))?/.match(info)
           airtime = Time.strptime("#{date} #{info[:time]}+09:00", '/%Y/%m/%d %H:%M%z').utc
 
           @shows[title] = show = if @shows.has_key? title
